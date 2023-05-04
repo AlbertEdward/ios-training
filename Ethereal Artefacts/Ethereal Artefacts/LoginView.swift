@@ -12,6 +12,10 @@ struct LoginView: View {
     @State private var password: String = ""
     @State private var isEmailValid: Bool = true
     @State private var showPassword: Bool = false
+    @State private var loginError: String? = nil
+    
+    let validUsername = "user@example.com"
+    let validPassword = "1122"
     
     var body: some View {
         ZStack {
@@ -65,7 +69,12 @@ struct LoginView: View {
                     
                     
                     Button(action: {
-                        self.password = ""
+                        if self.username == validUsername && self.password == validPassword {
+                            self.loginError = nil
+                            self.password = ""
+                        } else {
+                            self.loginError = "Invalid credentials"
+                        }
                     }) {
                         Text("Log in")
                             .font(.headline)
@@ -77,13 +86,18 @@ struct LoginView: View {
                     }
                     .padding(20)
                     
+                    if let error = loginError {
+                        Text(error)
+                            .foregroundColor(.red)
+                    }
+                    
                     Spacer()
                 }
                 
                 .padding()
             }
             .padding(.top, 110)
-            }
+        }
     }
     
     func validateEmail(_ email: String) -> Bool {
@@ -92,6 +106,7 @@ struct LoginView: View {
         return emailPredicate.evaluate(with: email)
     }
 }
+
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
