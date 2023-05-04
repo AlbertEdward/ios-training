@@ -11,6 +11,7 @@
 		CE576BC02A02F4EC0054A9C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE576BBF2A02F4EC0054A9C1 /* ContentView.swift */; };
 		CE576BC22A02F4F00054A9C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE576BC12A02F4F00054A9C1 /* Assets.xcassets */; };
 		CE576BC52A02F4F00054A9C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE576BC42A02F4F00054A9C1 /* Preview Assets.xcassets */; };
+		CED92E762A02FA9B00D0BE59 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED92E752A02FA9B00D0BE59 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		CE576BBF2A02F4EC0054A9C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CE576BC12A02F4F00054A9C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE576BC42A02F4F00054A9C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CED92E752A02FA9B00D0BE59 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				CE576BBF2A02F4EC0054A9C1 /* ContentView.swift */,
 				CE576BC12A02F4F00054A9C1 /* Assets.xcassets */,
 				CE576BC32A02F4F00054A9C1 /* Preview Content */,
+				CED92E752A02FA9B00D0BE59 /* LoginView.swift */,
 			);
 			path = "Ethereal Artefacts";
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED92E762A02FA9B00D0BE59 /* LoginView.swift in Sources */,
 				CE576BC02A02F4EC0054A9C1 /* ContentView.swift in Sources */,
 				CE576BBE2A02F4EC0054A9C1 /* Ethereal_ArtefactsApp.swift in Sources */,
 			);
