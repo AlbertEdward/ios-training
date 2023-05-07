@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var username: String = ""
+    @State private var userEmail: String = ""
     @State private var password: String = ""
     @State private var isEmailValid: Bool = true
     @State private var showPassword: Bool = false
     @State private var loginError: String? = nil
     
     let validUsername = "user@example.com"
-    let validPassword = "1122"
+    let validPassword = "112233"
     
     var body: some View {
         ZStack {
@@ -33,11 +33,11 @@ struct LoginView: View {
                 VStack (alignment: .leading, spacing: 20) {
                     Text("Log in")
                         .font(.system(size: 22, weight: .bold))
-                        .foregroundColor(Color.purple)
+                        .foregroundColor(Color(hex: "47337A"))
                     
-                    TextField("Email", text: $username, onEditingChanged: { isEditing in
+                    TextField("Email", text: $userEmail, onEditingChanged: { isEditing in
                         if !isEditing {
-                            self.isEmailValid = self.validateEmail(self.username)
+                            isEmailValid = validateEmail(userEmail)
                         }
                     })
                     .padding()
@@ -56,32 +56,31 @@ struct LoginView: View {
                             HStack {
                                 Spacer()
                                 Button(action: {
-                                    self.showPassword.toggle()
+                                    showPassword.toggle()
                                 }) {
-                                    Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
+                                    Image(systemName: showPassword ? "eye" : "eye.slash")
                                         .foregroundColor(.gray)
                                 }
                                 .padding(.trailing, 20)
                                 .accentColor(.gray)
                             }
-                                .padding(.bottom, 20)
+                            .padding(.bottom, 20)
                         )
                     
-                    
                     Button(action: {
-                        if self.username == validUsername && self.password == validPassword {
-                            self.loginError = nil
-                            self.password = ""
+                        if userEmail == validUsername && password == validPassword {
+                            loginError = nil
                         } else {
-                            self.loginError = "Invalid credentials"
+                            loginError = "Invalid email address."
+                            password = ""
                         }
                     }) {
                         Text("Log in")
                             .font(.headline)
                             .foregroundColor(.white)
                             .padding()
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .background(Color.purple)
+                            .frame(minWidth: 20, maxWidth: .infinity)
+                            .background(Color(hex: "47337A"))
                             .cornerRadius(24)
                     }
                     .padding(20)
@@ -105,8 +104,27 @@ struct LoginView: View {
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: email)
     }
+    
+    func isValidPassword(_ password: String) -> Bool {
+            let minPasswordLength = 6
+            return password.count >= minPasswordLength && !password.contains(" ")
+        }
 }
 
+extension Color {
+    init(hex: String) {
+        let scanner = Scanner(string: hex)
+        var rgbValue: UInt64 = 0
+
+        scanner.scanHexInt64(&rgbValue)
+
+        let red = Double((rgbValue & 0xff0000) >> 16) / 255.0
+        let green = Double((rgbValue & 0x00ff00) >> 8) / 255.0
+        let blue = Double(rgbValue & 0x0000ff) / 255.0
+
+        self.init(red: red, green: green, blue: blue)
+    }
+}
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
