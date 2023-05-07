@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CartButton: View {
-    var numberOfProducts: Int
+    var numberOfProducts: Int = 0
     
     var body: some View {
         ZStack(alignment: .topTrailing){
-            Image(systemName: "cart")
+            Image(systemName: "cart.fill")
                 .font(.system(size: 25))
             
             if numberOfProducts > 0 {

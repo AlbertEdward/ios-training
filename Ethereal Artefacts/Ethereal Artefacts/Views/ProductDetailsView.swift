@@ -8,43 +8,41 @@
 import SwiftUI
 
 struct ProductDetailsView: View {
+    var product: Product
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack(){
-                Spacer()
-                Text("Product Details")
-                    .font(.headline)
-                    .fontWeight(.bold)
                 Spacer()
                 CartButton(numberOfProducts: 4)
                     .padding(20)
             }
             
-            Image("Mask Group 3")
+            Image(product.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding()
                 .opacity(1)
             
             HStack{
-                Text("Stargazer’s Tea Set")
+                Text(product.name)
                     .font(.system(size: 16))
                     .fontWeight(.bold)
                     .padding()
                 
-                RatingView(rating: 4)
+                Rating(rating: product.rating)
             }
             
-            Text("Category: Home")
+            Text("Category: " + product.category)
                 .font(.system(size: 12))
                 .fontWeight(.bold)
                 .padding()
             
-            Text("Indulge in a heavenly tea experience with our Stargazer’s Tea Set, featuring a constellation-themed teapot and matching teacups. Crafted from fine porcelain, this elegant set will transport you to the cosmos with every sip.")
+            Text(product.description)
                 .font(.body)
                 .padding()
             
-            Text("$90.00")
+            Text(String(format: "$%.2f", product.price))
                 .font(.system(size: 24))
                 .fontWeight(.bold)
                 .padding()
@@ -64,27 +62,13 @@ struct ProductDetailsView: View {
             
             Spacer()
         }
-        .navigationBarTitle("Name")
+        .navigationBarTitle("Product Details")
+        .font(.system(size: 22))
     }
 }
 
 struct ProductDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailsView()
-    }
-}
-
-
-struct RatingView: View {
-    let rating: Int
-    let maxRating: Int = 5
-    
-    var body: some View {
-        HStack(spacing: 2) {
-            ForEach(1...maxRating, id: \.self) { index in
-                Image(systemName: index <= rating ? "star.fill" : "star")
-                    .foregroundColor(.yellow)
-            }
-        }
+        ProductDetailsView(product: productList[0])
     }
 }
