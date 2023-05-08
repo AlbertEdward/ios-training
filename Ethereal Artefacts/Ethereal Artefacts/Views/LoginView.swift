@@ -48,26 +48,21 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                         
-                        SecureField("Password", text: $password)
-                            .padding()
-                            .foregroundColor(Color.black)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .padding(.bottom, 20)
-                            .overlay(
-                                HStack {
-                                    Spacer()
-                                    Button(action: {
-                                        showPassword.toggle()
-                                    }) {
-                                        Image(systemName: showPassword ? "eye" : "eye.slash")
-                                            .foregroundColor(.gray)
-                                    }
-                                    .padding(.trailing, 20)
-                                    .accentColor(.gray)
-                                }
-                                    .padding(.bottom, 20)
-                            )
+                        HStack {
+                            if showPassword {
+                                TextField("Password", text: $password)
+                            } else {
+                                SecureField("Password", text: $password)
+                            }
+                            Button(action: { showPassword.toggle() }) {
+                                Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(.bottom, 10)
                         
                         Button(action: {
                             if userEmail == validUserEmail && password == validPassword {
