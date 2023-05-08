@@ -39,7 +39,7 @@ struct LoginView: View {
                         
                         TextField("Email", text: $userEmail, onEditingChanged: { isEditing in
                             if !isEditing {
-                                isEmailValid = validateEmail(userEmail)
+                                isEmailValid = validateEmail(userEmail.lowercased())
                             }
                         })
                         .padding()
@@ -102,24 +102,13 @@ struct LoginView: View {
             }
             .background(
                 NavigationLink(
-                    destination: HomepageView(),
+                    destination: HomepageView().navigationBarBackButtonHidden(true),
                     isActive: $isLoggedIn
                 ) {
                     EmptyView()
                 }
             )
         }
-    }
-    
-    func validateEmail(_ email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
-    }
-    
-    func isValidPassword(_ password: String) -> Bool {
-        let minPasswordLength = 6
-        return password.count >= minPasswordLength && !password.contains(" ")
     }
 }
 

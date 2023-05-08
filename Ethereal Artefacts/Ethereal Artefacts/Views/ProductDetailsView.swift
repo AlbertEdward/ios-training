@@ -12,31 +12,32 @@ struct ProductDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(){
-                Spacer()
-                CartButton(numberOfProducts: 4)
-                    .padding(20)
-            }
+            Spacer()
             
             Image(product.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .padding()
                 .opacity(1)
+                .frame(maxWidth: .infinity)
+
+            Spacer()
             
             HStack{
                 Text(product.name)
                     .font(.system(size: 16))
                     .fontWeight(.bold)
-                    .padding()
+                    .padding(.top)
+                    .padding(.leading)
+                
+                Spacer()
                 
                 Rating(rating: product.rating)
+                    .padding(.trailing)
             }
             
             Text("Category: " + product.category)
                 .font(.system(size: 12))
-                .fontWeight(.bold)
-                .padding()
+                .padding(.leading)
             
             Text(product.description)
                 .font(.body)
@@ -46,7 +47,6 @@ struct ProductDetailsView: View {
                 .font(.system(size: 24))
                 .fontWeight(.bold)
                 .padding()
-            
             Button(action: {
             }) {
                 Text("Add to Cart")
@@ -64,6 +64,12 @@ struct ProductDetailsView: View {
         }
         .navigationBarTitle("Product Details")
         .font(.system(size: 22))
+        .toolbar{
+            NavigationLink{
+            } label: {
+                CartButton()
+            }
+        }
     }
 }
 
