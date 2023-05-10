@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct HomepageView: View {    
+struct HomepageView: View {
+    @State private var searchText = ""
+    
     var body: some View {
-        NavigationView() {
+        NavigationStack() {
             VStack {
                 HStack {
                     Text("Home")
                         .font(.title)
                         .fontWeight(.bold)
+                        .searchable(text: $searchText)
+                    
                     Spacer()
                     
                     Image(systemName: "person.circle.fill")
@@ -24,8 +28,6 @@ struct HomepageView: View {
                     CartButton(numberOfProducts: 4)
                 }
                 .padding(.horizontal)
-                
-                SearchField()
                 
                 HStack{
                     Text("New Products")

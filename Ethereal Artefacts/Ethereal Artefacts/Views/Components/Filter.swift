@@ -21,7 +21,7 @@ struct Filter: View {
                     .font(.caption2).bold()
                     .foregroundColor(.white)
                     .frame(width: 15, height: 15)
-                    .background(Color(hex: "47337A"))
+                    .background(Color("DeepPurple"))
                     .cornerRadius(50)
             }
         }

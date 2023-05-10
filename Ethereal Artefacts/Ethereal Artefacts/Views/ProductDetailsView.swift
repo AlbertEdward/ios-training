@@ -55,7 +55,7 @@ struct ProductDetailsView: View {
                     .foregroundColor(.white)
                     .padding()
                     .frame(minWidth: 20, maxWidth: .infinity)
-                    .background(Color(hex: "47337A"))
+                    .background(Color("DeepPurple"))
                     .cornerRadius(24)
             }
             .padding()

@@ -19,7 +19,7 @@ struct LoginView: View {
     let validPassword = "112233"
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 Image("EtherealArtefacts_login_background")
                     .resizable()
@@ -35,7 +35,7 @@ struct LoginView: View {
                     VStack (alignment: .leading, spacing: 20) {
                         Text("Log in")
                             .font(.system(size: 22, weight: .bold))
-                            .foregroundColor(Color(hex: "47337A"))
+                            .foregroundColor(Color("DeepPurple"))
                         
                         TextField("Email", text: $userEmail, onEditingChanged: { isEditing in
                             if !isEditing {
@@ -79,7 +79,7 @@ struct LoginView: View {
                                 .foregroundColor(.white)
                                 .padding()
                                 .frame(minWidth: 20, maxWidth: .infinity)
-                                .background(Color(hex: "47337A"))
+                                .background(Color("DeepPurple"))
                                 .cornerRadius(24)
                         }
                         .padding()
@@ -99,26 +99,9 @@ struct LoginView: View {
                 NavigationLink(
                     destination: HomepageView().navigationBarBackButtonHidden(true),
                     isActive: $isLoggedIn
-                ) {
-                    EmptyView()
-                }
+                ){}
             )
         }
-    }
-}
-
-extension Color {
-    init(hex: String) {
-        let scanner = Scanner(string: hex)
-        var rgbValue: UInt64 = 0
-        
-        scanner.scanHexInt64(&rgbValue)
-        
-        let red = Double((rgbValue & 0xff0000) >> 16) / 255.0
-        let green = Double((rgbValue & 0x00ff00) >> 8) / 255.0
-        let blue = Double(rgbValue & 0x0000ff) / 255.0
-        
-        self.init(red: red, green: green, blue: blue)
     }
 }
 

@@ -20,7 +20,7 @@ struct Rating: View {
             ForEach(1...maxRating, id: \.self) { index in
                 Image(systemName: index <= rating ? "star.fill" : "star")
                     .font(.caption2)
-                    .foregroundColor(Color(hex: "67548B"))
+                    .foregroundColor(Color("DeepPurple"))
             }
         }
     }
