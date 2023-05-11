@@ -11,24 +11,8 @@ struct HomepageView: View {
     @State private var searchText = ""
     
     var body: some View {
-        NavigationStack() {
+        VStack {
             VStack {
-                HStack {
-                    Text("Home")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .searchable(text: $searchText)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "person.circle.fill")
-                        .font(.title)
-                        .padding(.trailing, 8)
-                    
-                    CartButton(numberOfProducts: 4)
-                }
-                .padding(.horizontal)
-                
                 HStack{
                     Text("New Products")
                         .font(.system(size: 24))
@@ -41,15 +25,27 @@ struct HomepageView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 400))], alignment: .leading){
-                        ForEach(productList, id: \.id)
-                        {
-                            product in ProductCard(product: product)
-                            Divider()
+                        ForEach(productList, id: \.id) {
+                          ProductCard(product: $0)
+                          Divider()
                         }
                     }
                     .padding()
                 }
             }
+            .navigationBarTitle("Home")
+            .font(.title)
+            .navigationBarBackButtonHidden(true)
+            .searchable(text: $searchText)
+            .navigationBarItems(trailing:
+                                    HStack(spacing: 16) {
+                Image(systemName: "person.circle.fill")
+                    .font(.system(size: 25))
+                
+                CartButton(numberOfProducts: 4)
+                    .font(.system(size: 25))
+            }
+            )
         }
         .accentColor(.black)
     }

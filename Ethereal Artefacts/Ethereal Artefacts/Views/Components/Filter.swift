@@ -13,7 +13,7 @@ struct Filter: View {
     var body: some View {
         ZStack(alignment: .topTrailing){
             Image(systemName: "line.3.horizontal.decrease")
-                .font(.system(size: 30))
+                .font(.title)
                 .bold()
             
             if numberOfFilters > 0 {

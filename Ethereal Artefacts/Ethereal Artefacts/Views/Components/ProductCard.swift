@@ -17,22 +17,22 @@ struct ProductCard: View {
                     .frame(width: 130, height: 130)
                 
                 VStack(alignment: .leading){
-                    Text("Category: " + product.category)
-                        .font(.system(size: 12))
+                    Text("Category: \(product.category)")
+                        .font(.caption)
                     
                     Text(product.name)
-                        .font(.system(size: 16))
+                        .font(.body)
                         .bold()
                         .foregroundColor(.black)
                     
                     Text(product.description.prefix(15) + "...")
-                        .font(.system(size: 14))
+                        .font(.subheadline)
                     
                     Rating(rating: product.rating)
                         .padding(.bottom)
                     
                     Text(String(format: "$%.2f", product.price))
-                        .font(.system(size: 16))
+                        .font(.body)
                         .foregroundColor(.black)
                 }
             }

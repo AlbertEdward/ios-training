@@ -10,9 +10,9 @@ import SwiftUI
 struct LoginView: View {
     @State private var userEmail: String = ""
     @State private var password: String = ""
-    @State private var isEmailValid: Bool = true
-    @State private var showPassword: Bool = false
-    @State private var loginError: String? = nil
+    @State private var isEmailValid = true
+    @State private var showPassword = false
+    @State private var loginError: String?
     @State private var isLoggedIn: Bool = false
     
     let validUserEmail = "user@example.com"
@@ -21,10 +21,6 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Image("EtherealArtefacts_login_background")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .edgesIgnoringSafeArea(.all)
                 VStack{
                     VStack{
                         Image("Ethereal Artefacts_Logo")
@@ -34,7 +30,7 @@ struct LoginView: View {
                     }
                     VStack (alignment: .leading, spacing: 20) {
                         Text("Log in")
-                            .font(.system(size: 22, weight: .bold))
+                            .font(.title2).bold()
                             .foregroundColor(Color("DeepPurple"))
                         
                         TextField("Email", text: $userEmail, onEditingChanged: { isEditing in
@@ -64,8 +60,17 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                         
-                        loginButton()
-                            .navigationDestination(isPresented: $isLoggedIn, destination: {HomepageView()})
+                        Button(action: performLogin) {
+                            Text("Log in")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(minWidth: 20, maxWidth: .infinity)
+                                .background(Color("DeepPurple"))
+                                .cornerRadius(24)
+                        }
+                        .navigationDestination(isPresented: $isLoggedIn, destination: {HomepageView()})
                         
                         if let error = loginError {
                             Text(error)
@@ -78,28 +83,23 @@ struct LoginView: View {
                 }
                 .padding(.top, 110)
             }
-            .background()
+            .frame(height: .infinity)
+            .background(
+                Image("EtherealArtefacts_login_background")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .edgesIgnoringSafeArea(.all)
+            )
         }
     }
     
-    func loginButton() -> some View {
-        Button(action: {
-            if userEmail == validUserEmail && password == validPassword {
-                loginError = nil
-                isLoggedIn = true
-            } else {
-                loginError = "Invalid email address."
-                password = ""
-            }
-        }) {
-            Text("Log in")
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding()
-                .frame(minWidth: 20, maxWidth: .infinity)
-                .background(Color("DeepPurple"))
-                .cornerRadius(24)
+    func performLogin() {
+        if userEmail == validUserEmail && password == validPassword {
+            loginError = nil
+            isLoggedIn = true
+        } else {
+            loginError = "Invalid email address."
+            password = ""
         }
     }
 }
