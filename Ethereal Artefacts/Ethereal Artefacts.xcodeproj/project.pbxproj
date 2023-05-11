@@ -15,10 +15,10 @@
 		CE74770A2A08185200BCC3B9 /* HomepageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7477092A08185200BCC3B9 /* HomepageView.swift */; };
 		CE74770F2A0826B600BCC3B9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74770E2A0826B600BCC3B9 /* Product.swift */; };
 		CE7477112A08380800BCC3B9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7477102A08380800BCC3B9 /* Rating.swift */; };
+		CE74D6C02A0D36F2002D0649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74D6BF2A0D36F2002D0649 /* Constants.swift */; };
 		CEC41AD62A085D340049CDC6 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41AD52A085D340049CDC6 /* Filter.swift */; };
 		CEC41AD82A085FFB0049CDC6 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41AD72A085FFB0049CDC6 /* ProductCard.swift */; };
-		CEC41ADB2A0877DC0049CDC6 /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41ADA2A0877DC0049CDC6 /* EmailValidator.swift */; };
-		CEC41ADD2A0878260049CDC6 /* PasswordValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41ADC2A0878260049CDC6 /* PasswordValidator.swift */; };
+		CEC41ADB2A0877DC0049CDC6 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC41ADA2A0877DC0049CDC6 /* ValidationHelper.swift */; };
 		CEC41AE32A0ADC400049CDC6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CEC41AE22A0ADC400049CDC6 /* Alamofire */; };
 		CED92E762A02FA9B00D0BE59 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED92E752A02FA9B00D0BE59 /* LoginView.swift */; };
 /* End PBXBuildFile section */
@@ -33,10 +33,10 @@
 		CE7477092A08185200BCC3B9 /* HomepageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageView.swift; sourceTree = "<group>"; };
 		CE74770E2A0826B600BCC3B9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		CE7477102A08380800BCC3B9 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		CE74D6BF2A0D36F2002D0649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CEC41AD52A085D340049CDC6 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		CEC41AD72A085FFB0049CDC6 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
-		CEC41ADA2A0877DC0049CDC6 /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
-		CEC41ADC2A0878260049CDC6 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
+		CEC41ADA2A0877DC0049CDC6 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		CED92E752A02FA9B00D0BE59 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,10 +73,10 @@
 			children = (
 				CE576BBD2A02F4EC0054A9C1 /* Ethereal_ArtefactsApp.swift */,
 				CE74770B2A08261500BCC3B9 /* Views */,
-				CE74770C2A08262200BCC3B9 /* Models */,
 				CEC41AD92A0877C60049CDC6 /* Validators */,
 				CE576BC12A02F4F00054A9C1 /* Assets.xcassets */,
 				CE576BC32A02F4F00054A9C1 /* Preview Content */,
+				CE74D6BF2A0D36F2002D0649 /* Constants.swift */,
 			);
 			path = "Ethereal Artefacts";
 			sourceTree = "<group>";
@@ -103,6 +103,7 @@
 		CE74770B2A08261500BCC3B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE74770C2A08262200BCC3B9 /* ViewModels */,
 				CE5BCC952A07DF71007A4C65 /* Components */,
 				CE7477092A08185200BCC3B9 /* HomepageView.swift */,
 				CE5BCC932A079AB3007A4C65 /* ProductDetailsView.swift */,
@@ -111,19 +112,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CE74770C2A08262200BCC3B9 /* Models */ = {
+		CE74770C2A08262200BCC3B9 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				CE74770E2A0826B600BCC3B9 /* Product.swift */,
 			);
-			path = Models;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		CEC41AD92A0877C60049CDC6 /* Validators */ = {
 			isa = PBXGroup;
 			children = (
-				CEC41ADA2A0877DC0049CDC6 /* EmailValidator.swift */,
-				CEC41ADC2A0878260049CDC6 /* PasswordValidator.swift */,
+				CEC41ADA2A0877DC0049CDC6 /* ValidationHelper.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -205,10 +205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC41AD62A085D340049CDC6 /* Filter.swift in Sources */,
+				CE74D6C02A0D36F2002D0649 /* Constants.swift in Sources */,
 				CED92E762A02FA9B00D0BE59 /* LoginView.swift in Sources */,
-				CEC41ADD2A0878260049CDC6 /* PasswordValidator.swift in Sources */,
 				CE5BCC942A079AB3007A4C65 /* ProductDetailsView.swift in Sources */,
-				CEC41ADB2A0877DC0049CDC6 /* EmailValidator.swift in Sources */,
+				CEC41ADB2A0877DC0049CDC6 /* ValidationHelper.swift in Sources */,
 				CE74770A2A08185200BCC3B9 /* HomepageView.swift in Sources */,
 				CE7477112A08380800BCC3B9 /* Rating.swift in Sources */,
 				CE576BBE2A02F4EC0054A9C1 /* Ethereal_ArtefactsApp.swift in Sources */,

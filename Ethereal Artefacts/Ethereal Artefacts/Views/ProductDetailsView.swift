@@ -12,15 +12,13 @@ struct ProductDetailsView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Spacer()
-            
+
             Image(product.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .opacity(1)
                 .frame(maxWidth: .infinity)
-
-            Spacer()
+                .padding(.top)
             
             HStack{
                 Text(product.name)
@@ -35,7 +33,7 @@ struct ProductDetailsView: View {
                     .padding(.trailing)
             }
             
-            Text("Category: " + product.category)
+            Text("Category: \(product.category)")
                 .font(.system(size: 12))
                 .padding(.leading)
             
@@ -47,6 +45,7 @@ struct ProductDetailsView: View {
                 .font(.system(size: 24))
                 .fontWeight(.bold)
                 .padding()
+            
             Button(action: {
             }) {
                 Text("Add to Cart")
@@ -59,8 +58,6 @@ struct ProductDetailsView: View {
                     .cornerRadius(24)
             }
             .padding()
-            
-            Spacer()
         }
         .navigationBarTitle("Product Details")
         .font(.system(size: 22))

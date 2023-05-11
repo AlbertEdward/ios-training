@@ -39,7 +39,7 @@ struct LoginView: View {
                         
                         TextField("Email", text: $userEmail, onEditingChanged: { isEditing in
                             if !isEditing {
-                                isEmailValid = validateEmail(userEmail.lowercased())
+                                isEmailValid = ValidationHelper.validateEmail(userEmail.lowercased())
                             }
                         })
                         .padding()
@@ -55,7 +55,7 @@ struct LoginView: View {
                                 SecureField("Password", text: $password)
                             }
                             Button(action: { showPassword.toggle() }) {
-                                Image(systemName: showPassword ? "eye.fill" : "eye.slash.fill")
+                                Image(systemName: showPassword ? "eye.slash.fill" : "eye.fill")
                                     .foregroundColor(.gray)
                             }
                         }
@@ -64,25 +64,8 @@ struct LoginView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 10)
                         
-                        Button(action: {
-                            if userEmail == validUserEmail && password == validPassword {
-                                loginError = nil
-                                isLoggedIn = true
-                            } else {
-                                loginError = "Invalid email address."
-                                password = ""
-                            }
-                        }) {
-                            Text("Log in")
-                                .font(.headline)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(minWidth: 20, maxWidth: .infinity)
-                                .background(Color("DeepPurple"))
-                                .cornerRadius(24)
-                        }
-                        .padding()
+                        loginButton()
+                            .navigationDestination(isPresented: $isLoggedIn, destination: {HomepageView()})
                         
                         if let error = loginError {
                             Text(error)
@@ -95,12 +78,28 @@ struct LoginView: View {
                 }
                 .padding(.top, 110)
             }
-            .background(
-                NavigationLink(
-                    destination: HomepageView().navigationBarBackButtonHidden(true),
-                    isActive: $isLoggedIn
-                ){}
-            )
+            .background()
+        }
+    }
+    
+    func loginButton() -> some View {
+        Button(action: {
+            if userEmail == validUserEmail && password == validPassword {
+                loginError = nil
+                isLoggedIn = true
+            } else {
+                loginError = "Invalid email address."
+                password = ""
+            }
+        }) {
+            Text("Log in")
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .frame(minWidth: 20, maxWidth: .infinity)
+                .background(Color("DeepPurple"))
+                .cornerRadius(24)
         }
     }
 }
