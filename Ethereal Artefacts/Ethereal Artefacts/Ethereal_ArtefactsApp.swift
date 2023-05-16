@@ -11,7 +11,7 @@ import SwiftUI
 struct Ethereal_ArtefactsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }
